@@ -1,0 +1,12 @@
+# IDE
+.vscode/
+.idea/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Резервные копии
+*~
+*.bak
+*.old
