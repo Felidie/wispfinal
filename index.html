@@ -3,7 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
-    <title>WHISP | FINAL V4</title>
+    
+    <!-- Open Graph -->
+    <meta property="og:title" content="WHISP — ETERNITY — NORTHFALL">
+    <meta property="og:description" content="Author and creator of digital content.">
+    <meta property="og:image" content="https://i-mg24.ru/images/122925215626-62bnr.png">
+    <meta property="og:url" content="https://whispofficial.com/">
+    <meta property="og:type" content="website">
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="WHISP — ETERNITY — NORTHFALL">
+    <meta name="twitter:description" content="Author and creator of digital content.">
+    <meta name="twitter:image" content="https://i-mg24.ru/images/122925215626-62bnr.png">
+
+    
+    <title>Whisp Space</title>
 
     <!-- FONTS -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -260,13 +275,13 @@
             background: rgba(0,0,0,0.35);
             border: 1px solid rgba(255,255,255,0.18);
             box-shadow: 0 14px 48px rgba(0,0,0,0.75);
-            padding: 18px 18px;
+            padding: 22px 22px;
             transform: translateY(10px);
             transition: transform 0.55s cubic-bezier(0.22, 1, 0.36, 1);
             font-family: var(--font-pixel);
-            font-size: 1.25rem;
-            letter-spacing: 0.6px;
-            line-height: 1.35;
+            font-size: 1.45rem;
+            letter-spacing: 1.2px;
+            line-height: 1.45;
             text-align: center;
         }
         .customer-welcome.is-visible .customer-welcome-inner { transform: translateY(0); }
@@ -279,18 +294,23 @@
             margin-bottom: 10px;
         }
         .customer-welcome-inner .cw-lines { display: flex; flex-direction: column; gap: 6px; align-items: center; }
-        .cw-home-btn {
+        .cw-buttons-row {
             position: absolute;
-            left: 50%;
-            transform: translateX(-50%);
+            left: 0;
+            right: 0;
             bottom: -50px;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+        .cw-btn {
             padding: 10px 20px;
             border-radius: 14px;
-            border: 1px solid rgba(255,255,255,0.45);
-            background: rgba(255,255,255,0.08);
-            color: rgba(255,255,255,0.88);
+            border: 1px solid rgba(255,255,255,0.25);
+            background: rgba(255,255,255,0.04);
+            color: rgba(255,255,255,0.65);
             font-family: var(--font-press);
-            font-size: 0.68rem;
+            font-size: 0.65rem;
             letter-spacing: 0.7px;
             text-transform: uppercase;
             cursor: pointer;
@@ -298,13 +318,13 @@
             -webkit-backdrop-filter: blur(4px);
             transition: background 0.2s ease, border-color 0.2s ease, color 0.2s ease, transform 0.18s ease;
         }
-        .cw-home-btn:hover {
-            background: rgba(255,255,255,0.15);
-            border-color: rgba(255,255,255,0.7);
-            color: #fff;
-            transform: translateX(-50%) translateY(-1px);
+        .cw-btn:hover {
+            background: rgba(255,255,255,0.12);
+            border-color: rgba(255,255,255,0.5);
+            color: rgba(255,255,255,0.95);
+            transform: translateY(-1px);
         }
-        .cw-home-btn:active { transform: translateX(-50%) translateY(1px); }
+        .cw-btn:active { transform: translateY(1px); }
 
         /* --- 2. HEADER --- */
         header {
@@ -346,6 +366,88 @@
         nav li.active-tab { color: var(--white); text-shadow: 0 0 15px rgba(255,255,255,0.9); }
         
         .nav-scramble { color: #fff !important; text-shadow: 2px 0 #f00, -2px 0 #0ff; }
+
+        /* --- EMAIL CONTACT BUTTON (NAV) --- */
+        .nav-contact-btn {
+            display: flex;
+            align-items: center;
+            padding: 0 !important;
+        }
+        .email-contact-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 38px;
+            height: 38px;
+            border: 1px solid rgba(255,255,255,0.25);
+            border-radius: 10px;
+            background: rgba(255,255,255,0.06);
+            cursor: pointer;
+            transition: background 0.2s ease, border-color 0.2s ease, transform 0.15s ease;
+            text-decoration: none;
+            margin-left: 0;
+        }
+        .email-contact-btn:hover {
+            background: rgba(255,255,255,0.12);
+            border-color: rgba(255,255,255,0.45);
+            transform: translateY(-1px);
+        }
+        .email-contact-btn svg {
+            width: 20px;
+            height: 20px;
+            fill: none;
+            stroke: rgba(255,255,255,0.55);
+            stroke-width: 1.5;
+            transition: stroke 0.2s ease;
+        }
+        .email-contact-btn:hover svg {
+            stroke: rgba(255,255,255,0.9);
+        }
+
+        /* --- SKILL CONTACT ITEM (MOBILE ONLY) --- */
+        .skill-contact-item {
+            display: none;
+        }
+        @keyframes contactPulse {
+            0%, 100% { text-shadow: 0 0 8px rgba(255,255,255,0.3), 0 0 16px rgba(255,255,255,0.15); }
+            50% { text-shadow: 0 0 14px rgba(255,255,255,0.6), 0 0 28px rgba(255,255,255,0.3); }
+        }
+        .skill-contact-item[data-contact="true"] {
+            animation: contactPulse 2.5s ease-in-out infinite;
+            color: rgba(255,255,255,0.95);
+        }
+        .skill-contact-panel {
+            width: 100%;
+            max-height: 0;
+            opacity: 0;
+            overflow: hidden;
+            margin-top: 8px;
+            transition: max-height 0.25s ease, opacity 0.2s ease, margin-top 0.25s ease;
+        }
+        .skill-contact-panel.is-open {
+            max-height: 80px;
+            opacity: 1;
+            margin-top: 8px;
+        }
+        .skill-contact-panel a {
+            display: inline-block;
+            background: rgba(0,0,0,0.65);
+            border: 1px solid rgba(255,255,255,0.18);
+            border-radius: 10px;
+            padding: 10px 14px;
+            color: rgba(255,255,255,0.9);
+            font-family: var(--font-pixel);
+            font-size: 1.05rem;
+            letter-spacing: 0.8px;
+            text-decoration: none;
+            box-shadow: 0 8px 18px rgba(0,0,0,0.35);
+            transition: background 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+        }
+        .skill-contact-panel a:hover {
+            background: rgba(255,255,255,0.1);
+            border-color: rgba(255,255,255,0.4);
+            color: #fff;
+        }
 
         /* --- 3. LAYOUT --- */
         #main-wrapper { position: relative; width: 100%; height: 100vh; padding-top: 0; }
@@ -871,8 +973,8 @@
                 .skillset-block { padding-right: 0; display: flex; flex-direction: column; }
                 .skills-social-wrap { gap: 12px; flex-direction: column; flex: 1; }
                 .skills-list { flex: 1; }
-                .social-row { position: static; flex-direction: row; gap: 10px; margin-left: 0; margin-top: auto; padding-top: 8px; width: 100%; justify-content: flex-end; align-items: center; }
-                .social-icon { width: 42px; height: 42px; }
+                .social-row { position: static; flex-direction: row; gap: 28px; margin-left: 0; margin-top: auto; padding-top: 55px; width: 100%; justify-content: center; align-items: center; border-top: 1px solid rgba(255,255,255,0.08); padding-bottom: 8px; }
+                .social-icon { width: 52px; height: 52px; }
                 .skill-item { font-size: 1.65rem; }
                 .right-block { width: 100%; height: auto; overflow: visible; }
                 .healing-item { width: 100%; aspect-ratio: 16 / 9; height: auto; }
@@ -937,15 +1039,12 @@
                 #shop-page { position: relative; height: auto; min-height: calc(var(--vh, 1vh) * 100 - 80px); overflow: hidden; background-size: contain; background-position: center top; }
                 .shop-glitch { font-size: clamp(1.8rem, 7vw, 2.6rem); text-align: center; padding: 0 10px; }
                 .shop-support-actions { flex-direction: column; gap: 10px; margin-top: 14px; }
-                .shop-support-btn { padding: 9px 14px; font-size: 0.7rem; letter-spacing: 0.6px; }
                 .shop-support-note { font-size: 1.05rem; }
                 #shop-page p { font-size: 1.05rem !important; margin-top: 12px !important; }
-            
 
-            @media (max-width: 900px) {
-                
+                .nav-contact-btn { display: none; }
+                .skill-contact-item { display: block; }
             }
-        }
 
     /* iPad specific styles (768px - 1024px) */
     @media (min-width: 768px) and (max-width: 1024px) {
@@ -973,7 +1072,6 @@
         .customer-welcome-inner { font-size: 1.35rem; padding: 22px; }
         .cw-home-btn { font-size: 0.75rem; padding: 12px 24px; }
     }
-
 </style>
 </head>
 <body class="is-loading">
@@ -1027,6 +1125,7 @@
                 <li onclick="handleNavClick('art')" id="nav-art">ART</li>
                 <li onclick="handleNavClick('universe')" id="nav-universe">UNIVERSE</li>
                 <li onclick="handleNavClick('shop')" id="nav-shop">SHOP</li>
+                <li class="nav-contact-btn"><a href="mailto:whispdigital@gmail.com" class="email-contact-btn" title="Contact me"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><rect x="2" y="4" width="20" height="16" rx="2" ry="2"/><polyline points="22,6 12,13 2,6"/></svg></a></li>
             </ul>
         </nav>
     </header>
@@ -1053,7 +1152,7 @@
                             <div class="intro-welcome">Welcome humaN</div>
                             <div class="intro-line">Enjoy my visual novels in the <span class="intro-link" onclick="handleNavClick('universe')">UNIVERSE</span>.</div>
                             <div class="intro-line">Collections and examples of commercial <span class="intro-link" onclick="handleNavClick('projects')">PROJECTS</span>.</div>
-                            <div class="intro-line">You can support my deal or buy items in <span class="intro-link" onclick="handleNavClick('shop')">SHOP</span>.</div>
+                            <div class="intro-line">Support, additional content and merch in the <span class="intro-link" onclick="handleNavClick('shop')">SHOP</span>.</div>
                             <div class="intro-line" style="margin-top:5px;">And pay attention to the “?” symbol.</div>
                         </div>
                     </div>
@@ -1066,7 +1165,7 @@
                         <div class="skillset-divider-line"></div>
                         <div class="skills-social-wrap">
                             <div class="skills-list">
-                                <div class="skill-item" data-tooltip="FROM IDIA TO FINAL CINEMATIC VIDEO">Full cycle CGi cinematics</div>
+                                <div class="skill-item" data-tooltip="FROM IDEA TO FINAL CINEMATIC VIDEO">Full cycle CG videos</div>
                                 <div class="skill-item" data-tooltip="CREATIVE VIDEO EDIT AND COMPOSE">Video emergencty touches</div>
                                 <div class="skill-item" data-tooltip="HUMAN, FACE, DYNAMIC ACTION ANIMATIONS">3D & 2D animation forces</div>
                                 <div class="skill-item" data-tooltip="Antihuman Intelligence - i use it only like tools, not slop sh*t">AI TOOLS</div>
@@ -1074,11 +1173,14 @@
                                 <div class="skill-item" data-tooltip="TAKE A LOOK AROUND">?????</div>
                                 <div class="skill-item" data-tooltip="VIBECODING">SYBMOLS EVERYWHERE</div>
                                 <div class="skill-item" data-tooltip="MOTION DESIGN">MOTION AND UI</div>
+                                <div class="skill-item skill-contact-item" data-contact="true">CONTACT ME
+                                    <div class="skill-contact-panel"><a href="mailto:whispdigital@gmail.com">whispdigital@gmail.com</a></div>
+                                </div>
                             </div>
                             <div class="social-row">
+                                <a href="https://t.me/smokemymisery" target="_blank"><img src="logo_tg.png" class="social-icon" alt="TG" onerror="this.src='https://placehold.co/55x55?text=TG'"></a>
                                 <a href="https://www.youtube.com/@whisp_irl" target="_blank"><img src="logo_yt.png" class="social-icon" alt="YT" onerror="this.src='https://placehold.co/55x55?text=YT'"></a>
                                 <a href="http://instagram.com/WHISP_IRL" target="_blank"><img src="logo_inst.png" class="social-icon" alt="IG" onerror="this.src='https://placehold.co/55x55?text=IG'"></a>
-                                <a href="https://t.me/smokemymisery" target="_blank"><img src="logo_tg.png" class="social-icon" alt="TG" onerror="this.src='https://placehold.co/55x55?text=TG'"></a>
                             </div>
                         </div>
                     </div>
@@ -1093,7 +1195,7 @@
                         <button class="demo-reel-unmute" id="demo-reel-unmute-btn" type="button" aria-label="Unmute demo reel">UNMUTE</button>
                     </div>
                 </div>
-                <div class="healing-divider">scroll down to see more examples </div>
+                <div class="healing-divider">scroll down to see more examples</div>
                 <div class="healing-item">
                     <div class="healing-label-left">BEFORE</div><div class="healing-label-right">AFTER</div>
                     <div class="c-layer c-before"><video class="full-media" autoplay muted loop playsinline src="proj1_before.webm"></video></div>
@@ -1109,10 +1211,11 @@
                 </div>
                 <div class="healing-divider">compositing and stylization</div>
                 <div class="healing-item"><div class="healing-label-left">BEFORE</div><div class="healing-label-right">AFTER</div><div class="c-layer c-before"><video class="full-media" autoplay muted loop playsinline src="proj3_before.webm"></video></div><div class="c-layer c-after"><video class="full-media" autoplay muted loop playsinline src="proj3_after.webm"></video></div><input type="range" class="c-input" min="0" max="100" value="50" oninput="syncVideo(this)"></div>
-                <div class="healing-divider">just fun made things</div>
+                <div class="healing-divider">CG movies {from zero to hero}</div>
                 <div class="healing-item is-example"><video class="full-media" autoplay muted loop playsinline src="proj4_after.webm"></video></div>
                 <div class="healing-item is-example"><video class="full-media" autoplay muted loop playsinline src="proj5_after.webm"></video></div>
                 <div class="healing-item is-example"><video class="full-media" autoplay muted loop playsinline src="proj6_after.webm"></video></div>
+<div class="healing-divider">Teaser for Games and VFX {and motion design}</div>
                 <div class="healing-item is-example"><video class="full-media" autoplay muted loop playsinline src="proj7_after.webm"></video></div>
                 <div class="healing-item is-example"><video class="full-media" autoplay muted loop playsinline src="proj8_after.webm"></video></div>
                 <!-- <div class="healing-item is-example"><video class="full-media" autoplay muted loop playsinline src="proj9_after.mp4"></video></div> -->
@@ -1152,7 +1255,7 @@
             <div class="proj-footer">
                 <div class="proj-dots-fixed" id="proj-dots-fixed" aria-label="Project pagination"></div>
                 <div class="contact-row">
-                    <div class="contact-text"><br>Want to see your project in my collection? Feel free to contact me. <br> </div>
+                    <div class="contact-text"><br>Your project could join this collection. Email for collabs & offers.<br> </div>
                     <a href="mailto:whispdigital@gmail.com" class="email-btn">whispdigital@gmail.com</a>
                 </div>
             </div>
@@ -1332,9 +1435,12 @@
                             '<div>- make a turnkey CG teaser (with my CG special forces group).</div>' +
                             '<div>- create 2d\\3d animation (and direction for your team).</div>' +
                             '<div>- consultation and implementation of AI.</div>' +
-                            '<div>My commercial projects collection roll.</div>' +
+                            '<div>Close window to see my commercial projects collection roll.</div>' +
                         '</div>' +
-                        '<button type="button" class="cw-home-btn">MAIN PAGE</button>' +
+                        '<div class="cw-buttons-row">' +
+                            '<button type="button" class="cw-btn cw-close-btn">CLOSE WINDOW</button>' +
+                            '<button type="button" class="cw-btn cw-home-btn">MAIN PAGE</button>' +
+                        '</div>' +
                     '</div>';
 
                 const hide = () => {
@@ -1353,7 +1459,7 @@
                 };
 
                 const closeHandler = (e) => {
-                    if (e && e.target && e.target.classList && e.target.classList.contains('cw-home-btn')) {
+                    if (e && e.target && e.target.classList && (e.target.classList.contains('cw-btn'))) {
                         return;
                     }
                     if (e) {
@@ -1368,10 +1474,18 @@
                 wrap.addEventListener('touchstart', closeHandler, { passive: false });
 
                 const homeBtn = wrap.querySelector('.cw-home-btn');
+                const closeBtn = wrap.querySelector('.cw-close-btn');
+                
                 if (homeBtn) {
                     homeBtn.addEventListener('click', goHome);
                     homeBtn.addEventListener('pointerdown', (e) => e.stopPropagation());
                     homeBtn.addEventListener('touchstart', (e) => e.stopPropagation(), { passive: false });
+                }
+                
+                if (closeBtn) {
+                    closeBtn.addEventListener('click', (e) => { e.preventDefault(); e.stopPropagation(); hide(); });
+                    closeBtn.addEventListener('pointerdown', (e) => e.stopPropagation());
+                    closeBtn.addEventListener('touchstart', (e) => e.stopPropagation(), { passive: false });
                 }
 
                 document.body.appendChild(wrap);
@@ -1712,18 +1826,18 @@
         ];
 
         const artData = [
-            { title: 'ART 01', file: 'Art1.webm', type: 'video', desc: '' },
-            { title: 'ART 02', file: 'Art2.webm', type: 'video', desc: '' },
-            { title: 'ART 03', file: 'Art3.webm', type: 'video', desc: '' },
-            { title: 'ART 04', file: 'Art4.webm', type: 'video', desc: '' },
-            { title: 'ART 08', file: 'Art8.webm', type: 'video', desc: '' },
-            { title: 'ART 10', file: 'Art10.webm', type: 'video', desc: '' },
-            { title: 'ART 11', file: 'Art11.webm', type: 'video', desc: '' },
-            { title: 'ART 12', file: 'Art12.webm', type: 'video', desc: '' },
-            { title: 'ART XX 01', file: 'Artxx1.webm', type: 'video', desc: '' },
-            { title: 'FACES 01', file: 'Faces_1.webm', type: 'video', desc: '' },
-            { title: 'FIRE TIME', file: 'Fire-Time.webm', type: 'video', desc: '' },
-            { title: 'ART X 01', file: 'Artx1.webm', type: 'video', desc: '' },
+            { title: 'THE LIGHT', file: 'Art1.webm', type: 'video', desc: '' },
+            { title: 'THE RAZDOR', file: 'Art2.webm', type: 'video', desc: '' },
+            { title: 'WRONG PLACE', file: 'Art3.webm', type: 'video', desc: '' },
+            { title: 'GODBLESSED', file: 'Art4.webm', type: 'video', desc: '' },
+            { title: 'WHISP PT2', file: 'Art8.webm', type: 'video', desc: '' },
+            { title: 'THE REBORNEDONE', file: 'Art10.webm', type: 'video', desc: '' },
+            { title: 'NO WAY OUT', file: 'Art11.webm', type: 'video', desc: '' },
+            { title: 'TO LATE', file: 'Art12.webm', type: 'video', desc: '' },
+            { title: 'UNCERTAINTY', file: 'Artxx1.webm', type: 'video', desc: '' },
+            { title: 'WHISPERS', file: 'Faces_1.webm', type: 'video', desc: '' },
+            { title: 'THE WHEEL OF TIME', file: 'Fire-Time.webm', type: 'video', desc: '' },
+            { title: 'IDK WHO IS THIS, I JUST LIKE HIM', file: 'Artx1.webm', type: 'video', desc: '' },
         ];
         let carouselState = {
             target: 0,
@@ -1852,7 +1966,7 @@
                 const el = document.createElement('div');
                 el.className = 'carousel-card';
                 el.innerHTML = `
-    <video controls preload="metadata" loading="lazy" src="${p.video}" autoplay muted loop playsinline></video>
+    <video src="${p.video}" autoplay muted loop playsinline></video>
     <div class="card-inner-vignette"></div>
     ${p.badge ? `<div class="card-badge"><img src="${p.badge}" alt="badge"></div>` : ''}
     <div class="card-overlay">
@@ -2598,7 +2712,22 @@
                 uniforms.resolution.value.set(w, h);
             });
         }
-    
+
+        document.addEventListener('DOMContentLoaded', () => {
+            setVh();
+            window.addEventListener('resize', setVh);
+
+            // Mobile contact panel toggle
+            const contactItem = document.querySelector('.skill-contact-item');
+            if (contactItem) {
+                contactItem.addEventListener('click', (e) => {
+                    if (e.target.tagName === 'A') return;
+                    const panel = contactItem.querySelector('.skill-contact-panel');
+                    if (panel) panel.classList.toggle('is-open');
+                });
+            }
+        });
+
     </script>
 </body>
 </html>
